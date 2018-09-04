@@ -15,4 +15,5 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/omni.mk
+    $(LOCAL_DIR)/device.mk \
+    $(LOCAL_DIR)/omni_rk3288.mk
