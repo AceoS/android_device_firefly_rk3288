@@ -13,7 +13,7 @@ The Firefly-RK3288 (codenamed _"rk3288"_) is a high-end open source development 
 | -----------: | :---------------------------------------------- |
 | SoC          | Rockchip RK3288                                 |
 | CPU          | ARM® Cortex™-A17 Quad-Core up to 1.8GHz         |
-| GPU          | ARM® Mali-T760 MP4                              |
+| GPU          | ARM® Mali-T764 MP4                              |
 | Memory       | 2 GB RAM (LPDDR3 dual-channel)                  |
 | Shipped Android version | Android 5.1.0 / Ubuntu 14.04         |
 | Storage      | 16 GB (eMMC Flash)                              |
