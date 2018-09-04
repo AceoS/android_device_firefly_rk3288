@@ -16,4 +16,4 @@
 
 PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/device.mk \
-    $(LOCAL_DIR)/omni_rk3288.mk
+    $(LOCAL_DIR)/omni_firefly.mk
