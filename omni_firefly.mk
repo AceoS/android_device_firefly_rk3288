@@ -1,4 +1,5 @@
-# Copyright (C) 2010 The Android Open Source Project
+#
+# Copyright 2014 The Android Open-Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -11,35 +12,35 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
-#
-# This file is the build configuration for a full Android
-# build for grouper hardware. This cleanly combines a set of
-# device-specific aspects (drivers) with a device-agnostic
-# product configuration (apps).
 #
 
-# Sample: This is where we'd set a backup provider if we had one
-# $(call inherit-product, device/sample/products/backup_overlay.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
+include device/firefly/rk3288/BoardConfig.mk
 
-# Get the prebuilt list of APNs
-$(call inherit-product, vendor/omni/config/gsm.mk)
+# Inherit from those products. Most specific first.
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
 
-# Inherit from the common Open Source product configuration
-$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
+# Inherit device configuration
+$(call inherit-product, device/firefly/rk3288/device.mk)
 
-# must be before including omni part
-TARGET_BOOTANIMATION_SIZE := 1024x768
+# Inherit some common MK stuff.
+$(call inherit-product, vendor/omni/config/common_tablet.mk)
 
-# Inherit from our custom product configuration
-$(call inherit-product, vendor/omni/config/common.mk)
-
-# Inherit from hardware-specific part of the product configuration
-$(call inherit-product, device/rockhip/firefly/device.mk)
-
-# Discard inherited values and use our own instead.
-PRODUCT_NAME := omni_firefly
+PRODUCT_NAME := omni_rk3288
 PRODUCT_DEVICE := rk3288
-PRODUCT_BRAND := Rockchip
+PRODUCT_BRAND := Firefly
+PRODUCT_MODEL := Firefly-RK3288
 PRODUCT_MANUFACTURER := Rockchip
+
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    BUILD_PRODUCT=RK3288 \
+    TARGET_DEVICE=RK3288
+
+# AAPT
+PRODUCT_AAPT_CONFIG := normal large xlarge hdpi xhdpi xxhdpi
+PRODUCT_AAPT_PREF_CONFIG := xhdpi
+
+PRODUCT_CHARACTERISTICS := tablet
+
+# Resolution of boot animation
+TARGET_SCREEN_WIDTH := 1024
+TARGET_SCREEN_HEIGHT := 768
